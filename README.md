@@ -145,6 +145,27 @@ See all **gatsby-cli** commands at https://www.gatsbyjs.com/docs/gatsby-cli/
 
 ### Static pages
 
+Create a new folder **static** -> **images** and copy any image file (bubbles-callout.png) there
+
+Now you can open this file in a browser:
+
+http://localhost:8000/images/bubbles-callout.png
+
+Add the image in the About page using an `<img>` tag
+
+```jsx
+<p>This is a static image from the static folder.</p>
+<img
+    src="/images/bubbles-callout.png"
+    width={300}
+    quality={95}
+    formats={["auto", "webp", "avif"]}
+    alt="Bubles the robot"
+    style={{ marginBottom: `1.45rem` }}
+/>
+```
+
+
 ## Create new [split-screen] ReqactJs app
 
 `npx create-react-app@latest split-screen --use-npm`

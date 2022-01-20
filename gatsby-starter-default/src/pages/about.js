@@ -9,13 +9,13 @@ const AboutPage = () => (
     <Layout>
         <Seo title="About page" description="About page description" image="../images/gatsby-icon.png" />
         <h1>About</h1>
-        <p>This is a new Gatsby site.</p>
-        <StaticImage
-            src="../images/gatsby-astronaut.png"
+        <p>This is a static image from the static folder.</p>
+        <img
+            src="/images/bubbles-callout.png"
             width={300}
             quality={95}
             formats={["auto", "webp", "avif"]}
-            alt="A Gatsby astronaut"
+            alt="Bubles the robot"
             style={{ marginBottom: `1.45rem` }}
         />
         <p>
