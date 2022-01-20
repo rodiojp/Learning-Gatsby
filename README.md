@@ -1,6 +1,7 @@
 # Gatsby: A static site generator
 
-## Initial setup
+## 1. Setting Up Gatsby for the First Time
+### Initial setup
 
 - Node.js (v14.15 or newer) `node --version` (current v16.13.0) & `npm -v` (current 8.1.4)
 
@@ -40,7 +41,7 @@ Learn more about React with the [React course on freeCodeCamp](https://www.freec
     **GraphQL**: A query language that allows you to pull data into your website. It’s the interface that Gatsby uses for managing site data.
 Learn more about GraphQL with the [How to GraphQL tutorial](https://www.howtographql.com/).
 
-## Install a Gatsby starter
+### Install a Gatsby starter
 
 [Create project from starter](https://www.gatsbyjs.com/docs/how-to/local-development/starters/)
 
@@ -50,12 +51,72 @@ We will start with [gatsby-starter-default](https://www.gatsbyjs.com/starters/ga
 
 - `npx gatsby new gatsby-starter-default https://github.com/gatsbyjs/gatsby-starter-default`
 
+new folder name: gatsby-starter-default              
+
+source code from:  https://github.com/gatsbyjs/gatsby-starter-default
+
+ 
 Your new Gatsby site has been successfully bootstrapped. Start developing it by running:
 
 - `cd gatsby-starter-default`
-- `gatsby develop`
 
 **The better way of using new Gatsby: open new gatsby-starter-default project as a folder**
+
+### Start your local Gatsby site
+We need to run the build process and then also spin up a development server and connect the two so that it becomes available to us. 
+All of this is done using a command:
+
+- `gatsby develop`
+
+**gatsby develop** is one of several scripts available inside the **Gatsby CLI**:
+- It runs the build process to generate the static site and then puts that static site a **public** folder. 
+- It also creates a **cache** folder for additional development information. 
+- It spins up a local development server and connects it to that **public** folder. 
+
+Now you can now view gatsby-starter-default in the browser.
+
+    Local:  http://localhost:8000/
+
+View GraphiQL, an in-browser IDE, to explore your site's data and schema
+
+    Local:  http://localhost:8000/___graphql
+
+***Note*** that the development build is not optimized. To create a production build, use **gatsby build**
+
+Error loading a result for the page query in "using-ssr" / "using-ssr". Query was not run and no cached result was found. Couldn't get query results for
+"/using-ssr/" in 15.000s.
+
+#### Preview changes on other devices
+https://www.gatsbyjs.com/docs/reference/gatsby-cli/#preview-changes-on-other-devices
+
+You can use the Gatsby develop command with the host option to access your dev environment on other devices on the same network, run:
+- `gatsby develop -H 0.0.0.0`
+
+Now you can now view gatsby-starter-default in the browser.
+
+    Local:            http://localhost:8000/
+
+    On Your Network:  http://192.168.0.186:8000/
+
+View GraphiQL, an in-browser IDE, to explore your site's data and schema
+
+    Local:            http://localhost:8000/___graphql
+
+    On Your Network:  http://192.168.0.186:8000/___graphql
+
+#### Gatsby clean
+https://www.gatsbyjs.com/docs/reference/gatsby-cli/#clean
+At the root of a Gatsby site, wipe out the cache (.cache folder) and public directories:
+
+- `gatsby clean`
+
+This is useful as a last resort when your local project seems to have issues or content does not seem to be refreshing. Issues this may fix commonly include:
+
+- Stale data, e.g. this **file/resource/etc**. isn’t appearing
+- GraphQL error, e.g. this GraphQL resource should be present but is not
+- Dependency issues, e.g. invalid version, cryptic errors in console, etc.
+- Plugin issues, e.g. developing a local plugin and changes don’t seem to be taking effect
+
 
 
 ## Create new [split-screen] ReqactJs app
