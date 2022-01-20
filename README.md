@@ -284,6 +284,7 @@ This component will be translated into a new section with new scc style generate
 </section>
 ```
 
+
 ### Example: CSS modules and modern CSS
 
 [Component-Scoped Styles with CSS Modules](https://www.gatsbyjs.com/docs/how-to/styling/css-modules/)
@@ -392,6 +393,16 @@ import * as styles from "./index.module.css"
 
 ## 4. Plugins and Images
 
+Gatsby’s plugin layer includes a wide variety of common website functionality that you can drop in to your website. There are many types of Gatsby plugins, including:
+
+- Integrations, or “source plugins”. These plugins pull data into Gatsby’s GraphQL layer and make it available to query from your React components. Gatsby has source plugins for a wide range of headless CMSs, databases and spreadsheets, as well as the local filesystem. Here is a guide on sourcing data.
+- Progressive images
+- Dropping in analytics libraries like Google Analytics, Google Tag Manager, Segment, Hotjar, and others.
+- Performance enhancements while using CSS libraries, like Sass, styled-components and emotion. These plugins are not required to use these libraries but do make it easier and faster for the browser to parse styles.
+- Other website functionality, like SEO, offline support, sitemaps, and RSS feeds.
+
+[Add a Plugin to Your Site](https://www.gatsbyjs.com/docs/how-to/plugins-and-themes/using-a-plugin-in-your-site/)
+
 ### Extend Gatsby with plugins
 
 Gatsby Plugins are cofigured in the gatsby-config.js in the **plugins** section:
@@ -472,6 +483,48 @@ const NeuWrapper = styled.div`
   box-shadow: 1rem 1rem 3rem hsla(0, 0%, 100%, 0.2), -1rem -1rem 3rem #ffffff;
 `
 ```
+
+### Plugin options
+
+[Configuring Plugin Usage with Plugin Options](https://www.gatsbyjs.com/docs/how-to/plugins-and-themes/configuring-usage-with-plugin-options/)
+
+Plugins loaded into a Gatsby site can have options passed in to customize how a plugin operates.
+A [gatsby-source-filesystem](https://www.gatsbyjs.com/plugins/gatsby-source-filesystem/?=gatsby-source-filesystem) plugin for sourcing data into your Gatsby application from your local filesystem.
+
+```js
+module.exports = {
+  plugins: [
+    // You can have multiple instances of this plugin
+    // to read source nodes from different locations on your
+    // filesystem.
+    //
+    // The following sets up the Jekyll pattern of having a
+    // "pages" directory for Markdown files and a "data" directory
+    // for `.json`, `.yaml`, `.csv`.
+
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                name: `images`,
+                path: `${__dirname}/src/images`,
+            },
+        },
+  ],
+```
+Add a new content source of images:
+```js
+module.exports = {
+  plugins: [
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                name: `content-images`,
+                path: `${__dirname}/content/images`,
+            },
+        },
+  ],
+```
+
 
 # React in General
 
