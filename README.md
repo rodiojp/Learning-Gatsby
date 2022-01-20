@@ -228,6 +228,9 @@ import styles from "./layout.module.css"; // Import css modules stylesheet as st
 #### CSS-in-JS
 
 [How to set up a site with the CSS-in-JS library Styled Components.](https://www.gatsbyjs.com/docs/how-to/styling/styled-components/)
+
+Install the Gatsby pluging: [gatsby-plugin-styled-components](#gatsby-plugin-styled-components)
+
 - `npm install gatsby-plugin-styled-components styled-components babel-plugin-styled-components`
 
 And then add it to your site’s gatsby-config.js
@@ -242,7 +245,7 @@ module.exports = {
 }
 ```
 
-Or You can install [styled-components](https://styled-components.com/docs/basics) with npm:
+Or You can install just a ReactJs [styled-components](https://styled-components.com/docs/basics) with npm:
 - `npm install --save styled-components`
 
 Create and use a new Container component on a page:
@@ -489,7 +492,8 @@ const NeuWrapper = styled.div`
 [Configuring Plugin Usage with Plugin Options](https://www.gatsbyjs.com/docs/how-to/plugins-and-themes/configuring-usage-with-plugin-options/)
 
 Plugins loaded into a Gatsby site can have options passed in to customize how a plugin operates.
-A [gatsby-source-filesystem](https://www.gatsbyjs.com/plugins/gatsby-source-filesystem/?=gatsby-source-filesystem) plugin for sourcing data into your Gatsby application from your local filesystem.
+#### [gatsby-source-filesystem](https://www.gatsbyjs.com/plugins/gatsby-source-filesystem/?=gatsby-source-filesystem) 
+A plugin for sourcing data into your Gatsby application from your local filesystem.
 
 ```js
 module.exports = {
@@ -524,6 +528,55 @@ module.exports = {
         },
   ],
 ```
+### Example: Images in Gatsby
+
+Install [gatsby-plugin-image](#gatsby-plugin-image) and [gatsby-plugin-sharp](#gatsby-plugin-sharp). Additionally install [gatsby-source-filesystem](#gatsby-source-filesystem) if you are using static images, and **gatsby-transformer-sharp** if you are using dynamic images.
+- `npm install gatsby-plugin-image gatsby-plugin-sharp gatsby-source-filesystem gatsby-transformer-sharp`
+
+
+#### [gatsby-plugin-image](https://www.gatsbyjs.com/plugins/gatsby-plugin-image/?=gatsby-plugin-image)
+Adding responsive images to your site while maintaining high performance scores can be difficult to do manually. The Gatsby Image plugin handles the hard parts of producing images in multiple sizes and formats for you!
+
+For full documentation on all configuration options, see the [Gatsby Image Plugin reference guide](https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-plugin-image/)
+**Components**
+The Gatsby Image plugin includes two components to display responsive images on your site. One is used for static and the other for dynamic images.
+
+- **StaticImage**: Use this if the image is the same every time the component is used. Examples: site logo, index page hero image
+```jsx
+<StaticImage
+    src="../images/gatsby-astronaut.png"
+    width={300}
+    quality={95}
+    formats={["auto", "webp", "avif"]}
+    alt="A Gatsby astronaut"
+    style={{ marginBottom: `1.45rem` }}
+/>
+```
+The **StaticImage** component generates the following HTML code:
+
+```html
+<picture>
+    <source type="image/avif" srcset="/static/6d91c86c0fde632ba4cd01062fd9ccfa/26941/gatsby-astronaut.avif 75w,
+        /static/6d91c86c0fde632ba4cd01062fd9ccfa/95309/gatsby-astronaut.avif 150w,
+        /static/6d91c86c0fde632ba4cd01062fd9ccfa/288e4/gatsby-astronaut.avif 300w,
+        /static/6d91c86c0fde632ba4cd01062fd9ccfa/f5860/gatsby-astronaut.avif 600w" sizes="(min-width: 300px) 300px, 100vw">
+    <source type="image/webp" srcset="/static/6d91c86c0fde632ba4cd01062fd9ccfa/a18cc/gatsby-astronaut.webp 75w,
+        /static/6d91c86c0fde632ba4cd01062fd9ccfa/7ddcc/gatsby-astronaut.webp 150w,
+        /static/6d91c86c0fde632ba4cd01062fd9ccfa/dd79f/gatsby-astronaut.webp 300w,
+        /static/6d91c86c0fde632ba4cd01062fd9ccfa/11f71/gatsby-astronaut.webp 600w" sizes="(min-width: 300px) 300px, 100vw">
+    <img width="300" height="300" data-main-image="" sizes="(min-width: 300px) 300px, 100vw" decoding="async" src="/static/6d91c86c0fde632ba4cd01062fd9ccfa/c0d5f/gatsby-astronaut.png" srcset="/static/6d91c86c0fde632ba4cd01062fd9ccfa/1096c/gatsby-astronaut.png 75w,
+        /static/6d91c86c0fde632ba4cd01062fd9ccfa/01986/gatsby-astronaut.png 150w,
+        /static/6d91c86c0fde632ba4cd01062fd9ccfa/c0d5f/gatsby-astronaut.png 300w,
+        /static/6d91c86c0fde632ba4cd01062fd9ccfa/b5463/gatsby-astronaut.png 600w" alt="A Gatsby astronaut" style="object-fit: cover; opacity: 1;">
+</picture>
+
+``` 
+
+
+- **GatsbyImage**: Use this if the image is passed into the component as a prop, or otherwise changes. Examples: Blog post hero image, author avatar
+
+#### [gatsby-plugin-sharp](https://www.gatsbyjs.com/plugins/gatsby-plugin-sharp/?=gatsby-plugin-sharp)
+Exposes several image processing functions built on the Sharp image processing library. This is a low-level helper plugin generally used by other Gatsby plugins. You generally shouldn’t be using this directly but might find it helpful if doing very custom image processing.
 
 
 # React in General
