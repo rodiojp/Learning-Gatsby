@@ -10,6 +10,8 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
+
+
 //import "./layout.css"
 
 // Styles
@@ -18,6 +20,7 @@ import "../styles/accessibility.css"
 import "../styles/global.module.css"
 import "../fonts/fonts.css"
 import * as styles from "./layout.module.css"
+
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -39,7 +42,8 @@ const Layout = ({ children }) => {
           maxWidth: 960,
           padding: `0 1.0875rem 1.45rem`,
         }}
-      >
+          >
+
         <main>{children}</main>
         <footer
           style={{

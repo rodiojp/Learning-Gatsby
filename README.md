@@ -383,6 +383,8 @@ import * as styles from "./index.module.css"
 
 ```
 
+### Create a navigation component
+
 
 
 
