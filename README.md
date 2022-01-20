@@ -234,7 +234,11 @@ And then add it to your site’s gatsby-config.js
 
 ```js
 module.exports = {
-  plugins: [`gatsby-plugin-styled-components`],
+    plugins: [
+...
+        `gatsby-plugin-styled-components`
+...
+    ],
 }
 ```
 
@@ -244,6 +248,9 @@ Or You can install [styled-components](https://styled-components.com/docs/basics
 Create and use a new Container component on a page:
 
 ```jsx
+import styled from "styled-components"
+
+
 const Container = styled.section`
   margin: 2rem auto;
   max-width: 70ch;
@@ -383,10 +390,88 @@ import * as styles from "./index.module.css"
 
 ```
 
-### Create a navigation component
+## 4. Plugins and Images
+
+### Extend Gatsby with plugins
+
+Gatsby Plugins are cofigured in the gatsby-config.js in the **plugins** section:
+```js
+  plugins: [
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-image`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `gatsby-starter-default`,
+        short_name: `starter`,
+        start_url: `/`,
+        background_color: `#663399`,
+        // This will impact how browsers show your PWA/website
+        // https://css-tricks.com/meta-theme-color-and-trickery/
+        // theme_color: `#663399`,
+        display: `minimal-ui`,
+        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // To learn more, visit: https://gatsby.dev/offline
+    // `gatsby-plugin-offline`,
+  ],
+
+```
+You can find more plugins in the [Gatsby Plugin Library](https://www.gatsbyjs.com/plugins)
 
 
+#### [gatsby-plugin-styled-components](https://www.gatsbyjs.com/plugins/gatsby-plugin-styled-components/?=styled#gatsby-plugin-styled-components)
 
+Install
+- `npm install gatsby-plugin-styled-components styled-components babel-plugin-styled-components`
+
+Edit `gatsby-config.js`
+
+```js
+module.exports = {
+  plugins: [
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        // Add any options here
+      },
+    },
+  ],
+}
+
+// or if you do not need to add the optional parameters you can simplify the cofiguration
+module.exports = {
+  plugins: [
+    `gatsby-plugin-styled-components`,
+  ],
+}
+
+
+```
+
+Add new code in index.js
+```jsx
+import styled from "styled-components"
+
+const NeuWrapper = styled.div`
+  margin-bottom: 2rem;
+  padding: 2rem 2rem 1rem;
+  border-radius: 1rem;
+  background: #ffffff;
+  box-shadow: 1rem 1rem 3rem hsla(0, 0%, 100%, 0.2), -1rem -1rem 3rem #ffffff;
+`
+```
 
 # React in General
 
