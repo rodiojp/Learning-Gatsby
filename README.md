@@ -50,6 +50,8 @@ Find the starter you’d like to use on the [Starter Library](https://www.gatsbyjs
 We will start with [gatsby-starter-default](https://www.gatsbyjs.com/starters/gatsbyjs/gatsby-starter-default)
 
 - `npx gatsby new gatsby-starter-default https://github.com/gatsbyjs/gatsby-starter-default`
+or
+- gasby new project
 
 new folder name: gatsby-starter-default              
 
@@ -117,7 +119,27 @@ This is useful as a last resort when your local project seems to have issues or 
 - Dependency issues, e.g. invalid version, cryptic errors in console, etc.
 - Plugin issues, e.g. developing a local plugin and changes don’t seem to be taking effect
 
+## 2. Breaking Down a Gatsby Site
 
+### Starting from scratch with exercise files
+
+#### Gatsby new
+https://www.gatsbyjs.com/docs/reference/gatsby-cli/#new
+
+The CLI will run an interactive shell asking for these options before creating a Gatsby site for you:
+- `gatsby new`
+
+        - Create a new Gatsby site (Name: The project) in the folder [project]
+        - Get you set up to use PostCSS for styling your site
+        - Install gatsby-plugin-image, gatsby-plugin-react-helmet, gatsby-plugin-sitemap, gatsby-plugin-manifest, gatsby-plugin-mdx, gatsby-transformer-remark
+
+Open folder **project** in VS Code 
+
+Start the local development server with
+
+- `npm run develop`
+
+See all **gatsby-cli** commands at https://www.gatsbyjs.com/docs/gatsby-cli/
 
 ## Create new [split-screen] ReqactJs app
 

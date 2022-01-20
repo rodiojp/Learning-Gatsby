@@ -3,7 +3,7 @@
   "private": true,
   "description": "A simple starter to get up and developing quickly with Gatsby",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Kyle Mathews",
   "dependencies": {
     "gatsby": "^4.5.4",
     "gatsby-plugin-gatsby-cloud": "^4.5.2",
@@ -23,7 +23,7 @@
     "prettier": "^2.5.1"
   },
   "keywords": [
-    "gatsby"
+    "learn gatsby, learn react"
   ],
   "license": "0BSD",
   "scripts": {
