@@ -165,28 +165,121 @@ Add the image in the About page using an `<img>` tag
 />
 ```
 
+### The layout component
 
-## Create new [split-screen] ReqactJs app
+[Layout Components](https://www.gatsbyjs.com/docs/how-to/routing/layout-components/)
 
-`npx create-react-app@latest split-screen --use-npm`
+[How to prevent layout components from unmounting](https://www.gatsbyjs.com/docs/how-to/routing/layout-components/#how-to-prevent-layout-components-from-unmounting)
 
-We suggest that you begin by typing:
+### CSS in Gatsby: Multiple approaches
 
-- `cd split-screen`
--  `npm start`
+#### Plain Old CSS
 
-You can now view split-screen in the browser. Local: http://localhost:3000
+Add reset.css file into "./src/styles/reset.css" folder
 
-Note that the development build is not optimized. To create a production build, use `npm run build`.
-#### Without @leatest you will get the Error
-Error While Creating new React app(You are running `create-react-app` 4.0.3, which is behind the latest release (5.0.0))(https://stackoverflow.com/questions/70358474/error-while-creating-new-react-appyou-are-running-create-react-app-4-0-3-whi#answer-70358556)
-- `npx clear-npx-cache` to clear your npx cache
+1. Add the following code into gatsby-browser.js file
+```jsx
+import "./src/styles/reset.css" // Import regular stylesheet
 
-or use `create-react-app@latest`
+```
 
-- `npx create-react-app@latest split-screen --use-npm`
+2. Add the following code into Layout ("../components/layout.js") component file
+```jsx
+import "../styles/reset.css" // Import regular stylesheet
 
-#### Application structure
+```
+
+#### CSS Modules
+
+[Adding a CSS Modules Stylesheet](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/)
+
+[Github css-modules](https://github.com/css-modules/css-modules)
+
+A **CSS Module** is a CSS file in which all class names and animation names are scoped locally by default. All URLs (`url(...)`) and `@imports` are in module request format (`./xxx` and `../xxx` means relative, `xxx` and `xxx/yyy` means in modules folder, i. e. in `node_modules`).
+
+CSS Modules compile to a low-level interchange format called ICSS or [Interoperable CSS](https://github.com/css-modules/icss), but are written like normal CSS files:
+
+``` css
+/* style.css */
+.className {
+  color: green;
+}
+```
+
+When importing the **CSS Module** from a JS Module, it exports an object with all mappings from local names to global names.
+
+``` js
+import styles from "./style.css";
+// import { className } from "./style.css";
+
+element.innerHTML = '<div class="' + styles.className + '">';
+```
+```jsx
+import * as styles from "./layout.module.css"; // Import css modules stylesheet as styles
+import styles from "./layout.module.css"; // Import css modules stylesheet as styles
+
+// Here is an example of using CSS Module style
+      <main id="primary" className={styles.site_main}>
+        {children}
+      </main>
+
+```
+
+#### CSS-in-JS
+
+[How to set up a site with the CSS-in-JS library Styled Components.](https://www.gatsbyjs.com/docs/how-to/styling/styled-components/)
+- `npm install gatsby-plugin-styled-components styled-components babel-plugin-styled-components`
+
+And then add it to your site’s gatsby-config.js
+
+```js
+module.exports = {
+  plugins: [`gatsby-plugin-styled-components`],
+}
+```
+
+Or You can install [styled-components](https://styled-components.com/docs/basics) with npm:
+- `npm install --save styled-components`
+
+Create and use a new Container component on a page:
+
+```jsx
+const Container = styled.section`
+  margin: 2rem auto;
+  max-width: 70ch;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+`
+// Using the Container component
+    <Container>
+      <h1>About this project</h1>
+      <div>
+        <RobotImage src="/images/bubbles-callout.png" alt="bubbles the robot" />
+        <p>
+          And finally, lykke til from me to you on your journey with Gatsby!
+        </p>
+      </div>
+    </Container>
+```
+This component will be translated into a new section with new scc style generated:
+```html
+<style data-styled="active" data-styled-version="5.3.3">
+.iHmCRp {
+    margin: 2rem auto;
+    max-width: 70ch;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+}
+</style>
+
+<section class="sc-bdvvtL iHmCRp">
+...
+</section>
+```
+
+# React in General
+
+### React Application structure
 There are three top level sub-folders:
 
 - **/node_modules** : Where all of the external libraries used to piece together the React app are located. You shouldn’t modify any of the code inside this folder as that would be modifying a third party library, and your changes would be overwritten the next time you run the npm install command.
@@ -198,7 +291,7 @@ There are three top level sub-folders:
 - **src\App.js** component, which is the root component for our blog, as well as the css and tests that go with it. 
 
 
-#### Create new [SplitScreen] Component
+### Create new [SplitScreen] Component
 - **src\components\SplitScreen.js**
 
 
@@ -234,7 +327,7 @@ class Columns extends React.Component {
 }
 ```
 
-#### Minimal React components
+### Minimal React components
 ```js
 import React from 'react';
 
