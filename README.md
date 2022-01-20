@@ -141,6 +141,10 @@ Start the local development server with
 
 See all **gatsby-cli** commands at https://www.gatsbyjs.com/docs/gatsby-cli/
 
+## 3. Pages, Components, and Styles
+
+### Static pages
+
 ## Create new [split-screen] ReqactJs app
 
 `npx create-react-app@latest split-screen --use-npm`
