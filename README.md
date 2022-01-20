@@ -277,6 +277,115 @@ This component will be translated into a new section with new scc style generate
 </section>
 ```
 
+### Example: CSS modules and modern CSS
+
+[Component-Scoped Styles with CSS Modules](https://www.gatsbyjs.com/docs/how-to/styling/css-modules/)
+ allows you to write traditional, portable CSS with minimal side effects: gone are the worries of selector name collisions or affecting other components’ styles.
+
+Add [PostCSS Preset Env](https://www.npmjs.com/package/postcss-preset-env)  to your project:
+
+- `npm install postcss-preset-env --save-dev`
+
+the module will be added in package.json
+```json
+  "devDependencies": {
+    "postcss-preset-env": "^7.2.3",
+  },
+```
+
+ 
+add new `postcss.config.js` file to the root folder of your project
+
+```js
+const postcssPresetEnv = require(`postcss-preset-env`)
+
+module.exports = () => ({
+  plugins: [
+    postcssPresetEnv({
+      stage: 0,
+      importFrom: "src/styles/global.module.css",
+      features: {
+        "custom-properties": true, // already enabled by default
+        "custom-media-queries": true,
+        "custom-selectors": true,
+      },
+    }),
+  ],
+})
+```
+Add now css module: src/styles/global.module.css
+```css
+:root {
+  /* Fonts */
+  --primary-font: "Amstelvar", serif;
+  --highlight-font: "Recursive", sans-serif;
+  --heading-size: 2.6rem;
+
+  /* Colours */
+  --rich-black: hsl(210, 50%, 1%);
+
+  --mod-light: 90%;
+  --mod-medium: 50%;
+  --mod-dark: 20%;
+  --main-bg-light: hsl(183, 42%, var(--mod-light));
+  --main-bg-medium: hsl(183, 42%, var(--mod-medium));
+  --main-bg-dark: hsl(183, 42%, var(--mod-dark));
+
+  /* Sizes and widths */
+  --content-w-wide: 80rem;
+  --content-w-regular: 60rem;
+  --content-w-narrow: 70ch;
+}
+
+@custom-media --viewport-narrow-max (max-width: 40rem);
+@custom-media --viewport-narrow-min (min-width: 40rem);
+@custom-media --viewport-wide (min-width: 60rem);
+```
+Added some **fonts** in src/fonts folder:
+- Amstelvar-Italic-VF.ttf 
+- Amstelvar-Roman-VF.ttf 
+- fonts.css 
+- recursive-MONO_CASL_wght_slnt_ital--full_gsub--2019_12_17-23_21--subset-GF_latin_basic.woff2 
+
+Added folloing styles in Layout.js component 
+
+```jsx
+// Styles
+import "../styles/reset.css"
+import "../styles/accessibility.css"
+import "../styles/global.module.css"
+import "../fonts/fonts.css"
+import * as styles from "./layout.module.css"
+```
+
+Add new module `index.module.css` file for the index.js page
+```css
+.wrapper {
+  margin: 0 auto;
+  max-width: var(--content-w-narrow);
+}
+
+.heading {
+  margin: 2rem 0;
+  font-size: 2.6rem;
+}
+```
+
+Import index.module.css module file in index.js
+
+```jsx
+// Styles
+import * as styles from "./index.module.css"
+
+<section className={styles.wrapper}>
+    <h1 className={styles.heading}>Welcome to your new Gatsby site.</h1>
+</section>
+
+```
+
+
+
+
 # React in General
 
 ### React Application structure
