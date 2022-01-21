@@ -579,6 +579,20 @@ Exposes several image processing functions built on the Sharp image processing l
 ### Custom image features (with full width)
 
 
+## 5. Data
+
+### Gatsby and GraphQL
+
+View GraphiQL, an in-browser IDE, to explore your site's data and schema
+
+Local:  http://localhost:8000/___graphql
+
+
+Gatsby v2.1.0 introduces [useStaticQuery Hook](https://www.gatsbyjs.com/docs/how-to/querying-data/use-static-query/), a new Gatsby feature that provides the ability to use a React Hook to query with GraphQL at build time.
+
+Just like the [StaticQuery](https://www.gatsbyjs.com/docs/how-to/querying-data/static-query/) component, it allows your React components to retrieve data via a GraphQL query that will be parsed, evaluated, and injected into the component. However, useStaticQuery is a hook rather than a component that takes a render prop!
+
+*Note: **useStaticQuery** is a React Hook. All the Rules of Hooks apply.*
 
 # React in General
 
@@ -592,7 +606,6 @@ There are three top level sub-folders:
 - **public\index.html** file, which is html entry point for the app
 - **public\manifest.json** file, which is used with mobile phones. 
 - **src\App.js** component, which is the root component for our blog, as well as the css and tests that go with it. 
-
 
 ### Create new [SplitScreen] Component
 - **src\components\SplitScreen.js**
