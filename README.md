@@ -569,14 +569,15 @@ The **StaticImage** component generates the following HTML code:
         /static/6d91c86c0fde632ba4cd01062fd9ccfa/c0d5f/gatsby-astronaut.png 300w,
         /static/6d91c86c0fde632ba4cd01062fd9ccfa/b5463/gatsby-astronaut.png 600w" alt="A Gatsby astronaut" style="object-fit: cover; opacity: 1;">
 </picture>
-
 ``` 
-
 
 - **GatsbyImage**: Use this if the image is passed into the component as a prop, or otherwise changes. Examples: Blog post hero image, author avatar
 
 #### [gatsby-plugin-sharp](https://www.gatsbyjs.com/plugins/gatsby-plugin-sharp/?=gatsby-plugin-sharp)
 Exposes several image processing functions built on the Sharp image processing library. This is a low-level helper plugin generally used by other Gatsby plugins. You generally shouldn’t be using this directly but might find it helpful if doing very custom image processing.
+
+### Custom image features (with full width)
+
 
 
 # React in General
